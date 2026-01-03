@@ -1,26 +1,27 @@
-import { useState } from "react";
+import type { Component } from "solid-js";
+import { createSignal } from "solid-js";
+import { SolidLogo } from "./components/SolidLogo";
 import { ReRendersExample } from "./components/examples/ReRenders";
 import { SlowDerived } from "./components/examples/SlowDerived";
 import { UsingTheDom } from "./components/examples/UsingTheDom";
-import { ReactLogo } from "./components/ReactLogo";
 
 type ExampleType = "rerenders" | "slowDerived" | "usingTheDom";
 
-function App() {
+const App: Component = () => {
   const [selectedExample, setSelectedExample] =
-    useState<ExampleType>("rerenders");
+    createSignal<ExampleType>("rerenders");
 
   return (
-    <div className="w-full h-screen bg-neutral-900 text-white border-2 border-[#59C4DC] flex flex-col gap-8 p-12">
-      <header className="flex flex-row items-center justify-start gap-4">
-        <ReactLogo className="size-24" />
-        <h2 className="text-2xl font-bold">React Example</h2>
+    <div class="w-full h-screen bg-neutral-900 text-white border-2 border-[#1B336A] flex flex-col gap-8 p-12">
+      <header class=" flex flex-row items-center justify-start gap-4">
+        <SolidLogo class="size-24" />
+        <h2 class="text-2xl font-bold">Solid Example</h2>
       </header>
 
-      <div className="flex flex-row gap-2">
+      <div class="flex flex-row gap-2">
         <button
-          className={`px-4 py-2 rounded-md ${
-            selectedExample === "rerenders"
+          class={`px-4 py-2 rounded-md ${
+            selectedExample() === "rerenders"
               ? "bg-blue-500 text-white"
               : "bg-neutral-800 text-neutral-400 hover:bg-neutral-700"
           }`}
@@ -29,8 +30,8 @@ function App() {
           ReRenders
         </button>
         <button
-          className={`px-4 py-2 rounded-md ${
-            selectedExample === "slowDerived"
+          class={`px-4 py-2 rounded-md ${
+            selectedExample() === "slowDerived"
               ? "bg-blue-500 text-white"
               : "bg-neutral-800 text-neutral-400 hover:bg-neutral-700"
           }`}
@@ -39,8 +40,8 @@ function App() {
           SlowDerived
         </button>
         <button
-          className={`px-4 py-2 rounded-md ${
-            selectedExample === "usingTheDom"
+          class={`px-4 py-2 rounded-md ${
+            selectedExample() === "usingTheDom"
               ? "bg-blue-500 text-white"
               : "bg-neutral-800 text-neutral-400 hover:bg-neutral-700"
           }`}
@@ -51,12 +52,12 @@ function App() {
       </div>
 
       <div>
-        {selectedExample === "rerenders" && <ReRendersExample />}
-        {selectedExample === "slowDerived" && <SlowDerived />}
-        {selectedExample === "usingTheDom" && <UsingTheDom />}
+        {selectedExample() === "rerenders" && <ReRendersExample />}
+        {selectedExample() === "slowDerived" && <SlowDerived />}
+        {selectedExample() === "usingTheDom" && <UsingTheDom />}
       </div>
     </div>
   );
-}
+};
 
 export default App;
