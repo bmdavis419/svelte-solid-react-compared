@@ -30,7 +30,6 @@ export const SlowDerived: Component = () => {
   const [randomNum, setRandomNum] = createSignal(getRandomNumber());
   const [input, setInput] = createSignal("");
 
-  // const nextFivePrimes = createMemo(() => getNextFivePrimes(randomNum()));
   const nextFivePrimes = () => getNextFivePrimes(randomNum());
 
   return (

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 const getRandomNumber = () => {
   return Math.floor(Math.random() * 1000);
