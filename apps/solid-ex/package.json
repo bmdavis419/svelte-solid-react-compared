@@ -1,11 +1,11 @@
 {
-  "name": "vite-template-solid",
+  "name": "solid-ex",
   "version": "0.0.0",
   "description": "",
   "type": "module",
   "scripts": {
     "start": "vite",
-    "dev": "vite",
+    "dev": "vite dev --port 5174",
     "build": "vite build",
     "serve": "vite preview"
   },
