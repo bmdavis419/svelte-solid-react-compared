@@ -6,6 +6,7 @@
 </script>
 
 <svelte:head>
+	<title>Svelte Ex</title>
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
